@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<h2>My Posts</h2>
+{% for post in posts %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>{{ post.title }}</h5>
+            <p>{{ post.content[:100] }}...</p>
+            <a href="{{ url_for('blog.post_detail', post_id=post.id) }}" class="btn btn-sm btn-info">View</a>
+        </div>
+    </div>
+{% else %}
+    <p>You haven't written any posts yet.</p>
+{% endfor %}
+{% endblock %}
